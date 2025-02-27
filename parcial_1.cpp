@@ -14,8 +14,14 @@ void leerPuntos(Point puntos[], int n);
 double calcularDistanciaMasCercana(Point puntos[], int n, const Point &pUsuario, int &indiceMasCercano);
 
 /*BONO:
-Escribir una función que reciba un arreglo de puntos y devuelva la distancia total de los puntos que conforman el arreglo si estos fueran recorridos en orden.
+Escribir una función que reciba un arreglo de puntos y devuelva la distancia total de 
+los puntos que conforman el arreglo si estos fueran recorridos en orden.
 */
+// Solución bono
+/*double distanciaTotal(Point puntos, int n){
+    double dTotal=0; //se inicializa en 0 para evitar problemas de 
+    for (int i)
+}*/
 
 // Definición de la función para mostrar el punto más cercano y la distancia
 void mostrarResultado(Point puntos[], int indiceMasCercano, double distancia);
@@ -33,6 +39,7 @@ int main(){
     Point puntos[n]; // Arreglo de estructuras para almacenar las coordenadas (x, y)
     // Leer los puntos (manual o predeterminado)
     leerPuntos(puntos, n);
+    n=sizeof(puntos)/sizeof(puntos[0]); // Para reajustar el tamaño del vector de puntos
     // Ingresar el punto del usuario
     Point pUsuario;
     std::cout << "Ingrese las coordenadas del punto desde el que calcular la distancia\n";
@@ -82,12 +89,15 @@ void leerPuntos(Point puntos[], int n){
     }
 }
 
+// Función para calcular la distancia más cercana
 double calcularDistanciaMasCercana(Point puntos[], int n, const Point &pUsuario, int &indiceMasCercano){
     double distancia, distancia_min;
+    std::cout << n;
     distancia_min = calcularDistancia(puntos[0], pUsuario);
     indiceMasCercano = 0;
     for(int i=1; i < n; i++){
         distancia =calcularDistancia(puntos[i], pUsuario);
+        std::cout << i << "\n";
         if (distancia < distancia_min){
             distancia_min=distancia;
             indiceMasCercano=i;

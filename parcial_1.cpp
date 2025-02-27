@@ -29,7 +29,7 @@ int main(){
     // Leer el número de puntos
     std::cin >> n;
     // Se usa un ciclo while para que se pueda ingresar un numero de puntos valido sin necesidad de volver a ejecutar el programa
-    while  (n < 2){ 
+    while (n < 2){ 
         std::cout << "\nSe necesitan al menos 2 puntos para calcular las distancias.\n";
         std::cin >> n;
     }
@@ -69,7 +69,7 @@ void leerPuntos(Point puntos[], int n){
     std::cin >> respuesta;
     if (respuesta == 's' || respuesta == 'S'){
         for (int i=0; i<n; i++){
-            // Ingresar coordenada x en la posición i-esima
+            // Ingresar coordenadas en la posición i-esima
             std::cout << "Ingrese las coordenadas del punto\n";
             // Registro punto x
             std::cout << "Punto " <<i + 1 << " (x): ";

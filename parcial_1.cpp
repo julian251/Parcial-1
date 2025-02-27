@@ -17,11 +17,8 @@ double calcularDistanciaMasCercana(Point puntos[], int n, const Point &pUsuario,
 Escribir una función que reciba un arreglo de puntos y devuelva la distancia total de 
 los puntos que conforman el arreglo si estos fueran recorridos en orden.
 */
-// Solución bono
-/*double distanciaTotal(Point puntos, int n){
-    double dTotal=0; //se inicializa en 0 para evitar problemas de 
-    for (int i)
-}*/
+// Declaración solución bono
+double distanciaTotal(Point puntos[], int n);
 
 // Definición de la función para mostrar el punto más cercano y la distancia
 void mostrarResultado(Point puntos[], int indiceMasCercano, double distancia);
@@ -53,6 +50,9 @@ int main(){
     distancia=calcularDistanciaMasCercana(puntos, n, pUsuario, indiceMasCercano);
     // Mostrar el resultado
     mostrarResultado(puntos, indiceMasCercano, distancia);
+    double dTotal;
+    dTotal=distanciaTotal(puntos, n);
+    std::cout <<"La distancia total recorrida entre los puntos es: "<< dTotal << "\n";
     return 0;
 }
 
@@ -92,12 +92,10 @@ void leerPuntos(Point puntos[], int n){
 // Función para calcular la distancia más cercana
 double calcularDistanciaMasCercana(Point puntos[], int n, const Point &pUsuario, int &indiceMasCercano){
     double distancia, distancia_min;
-    std::cout << n;
     distancia_min = calcularDistancia(puntos[0], pUsuario);
     indiceMasCercano = 0;
     for(int i=1; i < n; i++){
         distancia =calcularDistancia(puntos[i], pUsuario);
-        std::cout << i << "\n";
         if (distancia < distancia_min){
             distancia_min=distancia;
             indiceMasCercano=i;
@@ -109,4 +107,11 @@ void mostrarResultado(Point puntos[], int indiceMasCercano, double distancia)
 {
     std::cout << "El punto más cercano es: (" << puntos[indiceMasCercano].x << ", " << puntos[indiceMasCercano].y << ")\n";
     std::cout << "La distancia al punto más cercano es: " << distancia << std::endl;
+}
+// Solución bono
+double distanciaTotal(Point puntos[], int n){
+    double dTotal=0; //se inicializa en 0 para evitar problemas de datos aleatorios
+    for (int i=0; i < (n-1);i++) //se ejecuta la suma n-1 veces
+        dTotal+= calcularDistancia(puntos[i], puntos[i+1]);// se suma la distancia entre la posición i y la posición i+1 
+    return dTotal;
 }
